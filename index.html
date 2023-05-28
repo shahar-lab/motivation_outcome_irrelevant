@@ -114,7 +114,7 @@
 
             "<p style='text-align:left'> We will now provide instructions regarding the card game. Please read them carefully. <br>"
             + "Feel free to go back and forth between the screens.<br><br>",
-            "Once you have finished reading the instructions, <b>we will ask you to take a quick quiz</b> to make sure you understood everything correctly.</p>",
+            "Once you finished reading the instructions, <b>we will ask you to take a quick quiz</b> to make sure you understood everything correctly.</p>",
 
             "<p style='text-align:left'> Here is an example of a four-card deck, similar to the cards you will encounter in the upcoming game. </p>" +
             "<img class='group' src= " + instructions_images[0] + ">",
@@ -123,7 +123,7 @@
                 +" To select the <b>left card</b>, press 's' on your keyboard, and to select the <b>right card</b>, press 'k'.</p><br>"
             + "<img class='example' src= " + instructions_images[1] + ">",
 
-            "<p style='text-align:left'>Once you have made your card selection, you will  <b>see the card you selected alongside an outcome</b> displayed in the center of the screen. <br>The outcome can either be <b>winning a golden coin</b>, as illustrated below, or...</p>"
+            "<p style='text-align:left'>Once you made your card selection, you will  <b>see the card you selected alongside an outcome</b> displayed in the center of the screen. <br>The outcome can either be <b>winning a golden coin</b>, as illustrated below, or...</p>"
             +"<br> <img class='example' src= " + instructions_images[2] + ">",
             "<p style='text-align:left'>Or it could be <b>not winning a coin, like here</b></p>"
             + "<br> <img class='example' src= " + instructions_images[3] + ">",
@@ -353,7 +353,7 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
             choices: "NO_KEYS",
-            trial_duration: 1000,
+            trial_duration: 500,
             data: { phase: 'practice', trial_name: 'choice1', trial_num: function () { return current_cards_practice_trial } },
             on_finish: function (data) {
                 data.key_selected = selected
@@ -397,7 +397,7 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
             choices: "NO_KEYS",
-            trial_duration: 1000,
+            trial_duration: 500,
             data: { phase: 'practice', trial_name: 'choice2', trial_num: function () { return current_cards_practice_trial } },
             on_finish: function (data) {
                 data.key_selected = selected
@@ -468,7 +468,7 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
             choices: "NO_KEYS",
-            trial_duration: 1000,
+            trial_duration: 500,
             data: { phase: 'exp', trial_name: 'choice', trial_num: function () { return current_cards_exp_trial }, block_type: function () {return blocks_stakes[block]} },
             on_finish: function (data) {
                 data.key_selected = selected
@@ -496,8 +496,8 @@
                 rewards_for_block += reward;
 
                 data.reward = reward;
-                data.left_card = left_card;
-                data.right_card = right_card;
+                data.left_card = images_for_block_start().indexOf(left_card);
+                data.right_card = images_for_block_start().indexOf(right_card);
                 data.key_selected = selected
                 if (selected == 0) {
                     data.card_selected = images_for_block_start().indexOf(left_card)
